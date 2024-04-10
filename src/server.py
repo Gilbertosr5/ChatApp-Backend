@@ -48,7 +48,7 @@ async def websocket_endpoint(websocket: WebSocket):
             data = await websocket.receive_text()
             print("Received: ", data)
             await connection_manager.broadcast(data)
-    except WebSocketDisconnet:
+    except WebSocketDisconnect:
         id = connection_manager.disconnect(websocket)
         await connection_manager.broadcast(json.dumps({
             "type": "disconnected",
